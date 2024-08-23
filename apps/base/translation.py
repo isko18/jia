@@ -1,12 +1,15 @@
 # apps/base/translation.py
 from modeltranslation.translator import translator, TranslationOptions
-from apps.base.models import Slider, SliderTitle, WhatWill, Video, Banner, What_will_title, About_the_forum, SliderTitleSponsors, Button
+from apps.base.models import Slider, SliderTitle, WhatWill, Video, Banner, What_will_title, About_the_forum, SliderTitleSponsors, Button, SliderSponsors
 
 class WhatWillTranslationOptions(TranslationOptions):
     fields = ('title',)
     
 class ButtonTranslationOptions(TranslationOptions):
     fields = ('title', )
+
+class SliderSponsorsTranslationOptions(TranslationOptions):
+    fields = ('title_sponsers', )
     
 class SliderTitleTranslationOptions(TranslationOptions):
     fields = ('title', )
@@ -30,6 +33,7 @@ class About_the_forumTranslationOptions(TranslationOptions):
 
 translator.register(Button, ButtonTranslationOptions)
 translator.register(SliderTitle, SliderTitleTranslationOptions)
+translator.register(SliderSponsors, SliderSponsorsTranslationOptions)
 translator.register(SliderTitleSponsors, SliderTitleSponsorsTranslationOptions)
 translator.register(WhatWill, WhatWillTranslationOptions)
 translator.register(Video, VideoTranslationOptions)

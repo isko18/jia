@@ -1,0 +1,106 @@
+.registration {
+    background-image: url('./img/bg.png');
+    padding-top: 150px;
+    padding-bottom: 30px;
+    background-size: cover;
+
+    &-title {
+        font-family: Inter;
+        font-size: 60px;
+        font-weight: 700;
+        line-height: 60px;
+        letter-spacing: -0.06em;
+        text-align: center;
+        color: #FFF;
+    }
+
+    &-text {
+        font-family: Inter;
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 40px;
+        text-align: center;
+        color: #FFF;
+        margin-top: 20px;
+        margin-bottom: 50px;
+
+    }
+
+    &-widget {
+        backdrop-filter: blur(5px);
+        padding: 40px;
+        height: 720px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 1px solid #FFC727;
+        border-right: 1px solid #FFF;
+        position: relative;
+
+        &-text{
+            color: #FFF;
+            margin-top: 30px;
+            font-family: Inter;
+            font-size: 24px;
+            font-weight: 300;
+            line-height: 28.8px;
+            color: #FFF;
+        }
+
+        &::before,
+        &::after {
+            background: rgb(255, 199, 39);
+            background: linear-gradient(90deg, rgba(255, 199, 39, 1) 30%, rgba(255, 255, 255, 1) 70%);
+            height: 1px;
+            content: '';
+            width: 100%;
+            position: absolute;
+            top: 0;
+        }
+        &::after{
+            top: auto;
+            bottom: 0;
+        }
+
+
+        &-title {
+            font-family: Inter;
+            font-size: 50px;
+            font-weight: 600;
+            line-height: 50px;
+            letter-spacing: -0.06em;
+            text-align: center;
+            width: 250px;
+            margin: 0 auto;
+            color: #FFF;
+            border-bottom: 1px solid #fff;
+            padding-bottom: 10px;
+
+            &-gold {
+                color: #FFC727;
+                border-bottom: 1px solid #FFC727;
+            }
+        }
+
+
+        &-btn {
+            background-color: #FFC727;
+            border: 1px solid #FFC727;
+            padding: 20px 40px;
+            font-family: Inter;
+            font-size: 20px;
+            font-weight: 500;
+            line-height: 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: .5s;
+
+            &:hover {
+                background-color: transparent;
+                color: #FFC727;
+            }
+        }
+    }
+
+}

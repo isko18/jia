@@ -54,7 +54,7 @@ class HistoryDetailAdmin(TranslationAdmin):
             'fields': ('title_ru', 'descriptions_ru', 'url_ru', 'amount_invest_ru','amount_projet_ru'),
         }),
         ('Английская версия', {
-            'fields': ('title_en', 'descriptions_en', 'url_en','amount_invest_en'),
+            'fields': ('title_en', 'descriptions_en', 'url_en','amount_invest_en', 'amount_projet_en'),
         }),
         ('Кыргызская версия', {
             'fields': ('title_ky', 'descriptions_ky', 'url_ky', 'amount_invest_ky', 'amount_projet_ky'),

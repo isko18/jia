@@ -120,19 +120,19 @@ export const Footer = () => {
           <div className="col-3">
             <div className="footer-nav">
             <h3 className="footer-nav-title">{linkText.navigation[lang]}</h3>
-            <Link className="footer-nav-link" onClick={scrollToTop} to={"/"}>
+            <Link className="footer-nav-link" onClick={scrollToTop} to={`/${lang}`}>
               <p>{linkText.main[lang]}</p>
             </Link>
-            <Link className="footer-nav-link" onClick={scrollToTop} to={"/projects"}>
+            <Link className="footer-nav-link" onClick={scrollToTop} to={`/${lang}/projects/`}>
               <p>{linkText.projects[lang]}</p>
             </Link>
-            <Link className="footer-nav-link" onClick={scrollToTop} to={"/funds"}>
+            <Link className="footer-nav-link" onClick={scrollToTop} to={`/${lang}/funds`}>
               <p>{linkText.funds[lang]}</p>
             </Link>
-            <Link className="footer-nav-link" onClick={scrollToTop} to={"/business"}>
+            <Link className="footer-nav-link" onClick={scrollToTop} to={`/${lang}/business`}>
               <p>{linkText.business[lang]}</p>
             </Link>
-            <Link className="footer-nav-link" onClick={scrollToTop} to={"/exhibition"}>
+            <Link className="footer-nav-link" onClick={scrollToTop} to={`/${lang}/exhibition`}>
               <p>{linkText.exhibition[lang]}</p>
             </Link>
             </div>

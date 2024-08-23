@@ -25,8 +25,8 @@ class SliderTitleSerializers(serializers.ModelSerializer):
         
 class SliderSponsorsSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Slider
-        fields = ('id', 'image')
+        model = SliderSponsors
+        fields = ('id', 'image', 'title_sponsers')
         
 class SliderTitleSponsorsSerializers(serializers.ModelSerializer):
     class Meta:

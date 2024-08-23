@@ -1,12 +1,6 @@
-// import { FirstSection } from "@components/ProjectsSections";
-// import bannerImage from "../../img/projectsBanner.png";
+
 import ReactPlayer from "react-player";
 import classes from "./ProjectsPage.module.scss";
-import ages1 from "../../img/projects-ages/2015.svg";
-import ages2 from "../../img/projects-ages/2016.svg";
-import ages3 from "../../img/projects-ages/2017.svg";
-import ages4 from "../../img/projects-ages/2019.svg";
-import ages5 from "../../img/projects-ages/2022.svg";
 import projectVideoBorder from "@img/projectsVideoBorder.png";
 import projectVideoBorderRight from "@img/projectsVideoBorderRight.png";
 import vector_left from "../../img/vector-left.svg";
@@ -14,15 +8,9 @@ import vector_right from "../../img/vector-right.svg";
 import investPrice from "../../img/investPrice.svg";
 import investDiagram from "../../img/investDiagram.svg";
 import "./projectsPage.scss";
-// import ProjectsPageHero from "./ProjectsPageHero";
-// import ProjectsPageProjects from "./ProjectsPageProjects";
-// import ProjectsPageInfo from "./ProjectsPageInfo";
-import { SwiperSlide, Swiper } from "swiper/react";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "swiper.css";
-import image1 from "../../img/sliderImage.png";
-import image2 from "../../img/header/emblem.png";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { SwiperSection } from "@pages/HomePage/HomeSections";
@@ -84,7 +72,7 @@ export const ProjectsPage = () => {
         alert("Данные не загрузились !");
       }
     })();
-  }, [lang]);
+  }, [lang, domain]);
   return (
     <div
       style={{ width: "100%", minHeight:'100vh', backgroundColor: "#051650" }}
@@ -126,8 +114,6 @@ export const ProjectsPage = () => {
 
             <div className={classes.about_content}>
               <p className={classes.about_text_content} dangerouslySetInnerHTML= {{__html:data.about.desc}}>
-
-
               </p>
             </div>
           </section>
@@ -178,16 +164,14 @@ export const ProjectsPage = () => {
               data.history_lines.map((item,index)=>{
                 const age = item.title.slice(0,4)
                 const title_content = item.title.slice(4,item.title.length)
-                console.log(title_content,'cont');
-                console.log(age,'age');
-                if(index%2==0){
+
+                if(index%2===0){
                   return(<div id={age} className={classes.history_lines_block}>
                     <h1 className={classes.history_lines_title}>
                       <span>{age}</span> {title_content}
                     </h1>
                     <div className={classes.history_lines_block_content}>
                       <p dangerouslySetInnerHTML={{__html:item.descriptions}}>
-
                       </p>
                       <div className={classes.history_lines_video}>
                         <div className={classes.history_lines_video_block}>
@@ -233,7 +217,7 @@ export const ProjectsPage = () => {
                          width={isM?'100vw':'100%'}
                       height={'100%'}
                       position={'relative'}
-                      zIndex={'2'}
+                      // zIndex={'2'}
                                     url={item.url} controls={true} alt=""/>
                         </div>
 
@@ -244,7 +228,7 @@ export const ProjectsPage = () => {
                         style={{ left: "24px" }}
                       />
                     </div>
-                    <p dangerouslySetInnerHTML={{__html:item.descriptions}}>
+                    <p style={{textAlign: 'right'}} dangerouslySetInnerHTML={{__html:item.descriptions}}>
 
                     </p>
                   </div>

@@ -20,7 +20,7 @@ class ImageFormSerializer(serializers.ModelSerializer):
 
 class ImageSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Financing
+        model = Image
         fields = ['id', 'image']
 
 class ReachSerializer(serializers.ModelSerializer):

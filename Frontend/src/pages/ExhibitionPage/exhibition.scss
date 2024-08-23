@@ -22,6 +22,9 @@
         width: 80%;
     }
 
+        a{
+            text-decoration: none;
+        }
     &-btn {
         font-family: Inter;
         font-size: 30px;
@@ -36,6 +39,7 @@
         margin: 40px auto;
         cursor: pointer;
         transition: .5s;
+
 
         &:hover {
             background-color: #EDB71B;

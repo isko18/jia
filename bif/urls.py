@@ -10,23 +10,22 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# Include Swagger URLs
 urlpatterns += urlpatterns_swagger
 
-# i18n patterns for multilingual support
 urlpatterns += i18n_patterns(
-    path('', index, name='index'),
-    path('<path:path>', index),
     path('api/v1/base/', include('apps.base.urls')),
     path('api/v1/about/', include('apps.about.urls')),
     path('api/v1/financing/', include('apps.financing.urls')),
-    path('api/v1/project/', include('apps.project.urls')),
+    path('api/v1/project/', include('apps.project.urls')),  
     path('api/v1/exhibition/', include('apps.exhibition.urls')),
+    path('api/v1/registration/', include('apps.registration.urls')),
     
+    
+    path('', index, name='index'),  # Главная страница для всех языков
+    path('<path:path>', index),
 )
 
 
-# Static and media files in development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

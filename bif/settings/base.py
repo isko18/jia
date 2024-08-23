@@ -45,8 +45,7 @@ LOCAL_APPS = [
     'apps.financing',
     'apps.project',
     'apps.exhibition',
-    
-
+    'apps.registration',
 ]
 
 INSTALLED_APPS = [
@@ -67,6 +66,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'corsheaders.middleware.CorsMiddleware',
+    # 'apps.base.middleware.RemoveLocaleMiddleware',
 ]
 
 
@@ -77,6 +77,7 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost",
     "http://127.0.0.1",
     "http://localhost:8080",
+    "https://biforum.kg/",
 ]
 
 REST_FRAMEWORK = {
@@ -111,6 +112,7 @@ WSGI_APPLICATION = 'bif.wsgi.application'
 LANGUAGE_CODE = 'ru'
 TIME_ZONE = 'Asia/Bishkek'
 USE_I18N = True
+USE_L10N = True
 USE_TZ = True
 WAGTAIL_DATE_FORMAT = '%d.%m.%Y.'
 WAGTAIL_DATETIME_FORMAT = '%d.%m.%Y. %H:%M'
@@ -140,15 +142,22 @@ DATABASES = {
 
 DATE_FORMAT = '%d.%m.%Y'
 DATETIME_FORMAT = '%d.%m.%Y. %H:%M'
+
 STATIC_URL = '/static/'
+
 STATIC_ROOT = BASE_DIR / 'static/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'Frontend/build/static'),  # Путь к статическим файлам React
+    os.path.join(BASE_DIR, 'Frontend/build/static/'),  # Путь к статическим файлам React
 ]
+
 MEDIA_URL = 'Frontend/build/static/media/'
+
 MEDIA_ROOT = BASE_DIR / 'Frontend/build/static/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -166,7 +175,13 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+CORS_ALLOW_CREDENTIALS = True
 
+CSRF_TRUSTED_ORIGINS = [
+    "https://biforum.kg/",
+    "http://localhost:3000 ",
+    "http://localhost:8000 ",
+]
 
 # LOGGING = {
 #     'version': 1,
@@ -203,6 +218,8 @@ LOGGING = {
         },
     },
 }
+LOCAL_HOST = ['*']
+ALLOWED_HOSTS = LOCAL_HOST + CORS_ALLOWED_ORIGINS
 
 if not PRODUCTION:
     from .development import *

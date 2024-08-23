@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from rest_framework.mixins import CreateModelMixin, ListModelMixin, RetrieveModelMixin, DestroyModelMixin
 from rest_framework import viewsets
 from apps.base.serializers import BaseSerializers, WhatWillSerializers, SliderSerializers,SliderTitleSerializers, VideoSerializers, BannerSerializers, What_will_titleSerializers, About_the_forumSerializers, SliderTitleSponsorsSerializers, SliderSponsorsSerializers, ButtonSerializer
@@ -6,7 +6,10 @@ from apps.base.models import Base, WhatWill, Slider, Video, Banner, About_the_fo
 
 # Create your views here.
 
-def index(request):
+def index(request, path='index'):
+    # Ваш код здесь
+    # if request:
+    #     return redirect("https://biforum.kg/")
     return render(request, 'index.html')
 
 class BaseMixins(CreateModelMixin,

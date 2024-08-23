@@ -19,10 +19,13 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
     brief_description: "",
     sector: "",
   });
+  
 
-  const [data,setData]= useState({})
+  const [data, setData]= useState({})
   const domain = useSelector(s => s.reducer.domain);
   const lang = useSelector(s => s.reducer.lang)
+  const [lastItem, setLastItem] = useState();
+  const [choice, setChoice] = useState();
 
   useEffect(()=>{
     (async()=>{
@@ -36,7 +39,15 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
         console.error(err);
       }
     })()
-  },[])
+
+  },[domain, lang, data])
+
+  useEffect(() => {
+      if (data.sectors && data.sectors.length > 0) {
+        setLastItem(data.sectors[data.sectors.length - 1].id)
+      }
+  }, [data])
+
 
   const hundlerLegalVisible = () => {
     setLegalVisible(!isLegalVisible);
@@ -44,9 +55,9 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
   const changeSendData = (value, target) => {
     setSendData((prew) => {
       prew[target] = value;
-      console.log("prew", prew);
       return prew;
     });
+
   };
 
   const hundlerSectorVisible = () => {
@@ -63,7 +74,6 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
       sendData.legal_name &&
       sendData.brief_description.length &&
       sendData.sector;
-    console.log(check);
     if (!check) {
       alert("Вы не заполнили все поля !");
       return;
@@ -77,7 +87,7 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
         body: JSON.stringify(sendData),
       };
       const res = await fetch(
-        `${domain}/ru/api/v1/financing/reach/`,
+        `${domain}/${lang}/api/v1/financing/reach/`,
         params
       );
       if(res.ok){
@@ -89,7 +99,6 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
       alert("Проблемы с сетью !");
     }
   };
-  // useEffect(() => {}, []);
 
   const w = useMediaQuery("(max-width: 700px)");
   const widthIcon = w ? "10" : "18";
@@ -98,7 +107,6 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
   if (!openModalForm) {
     return null;
   }
-  console.log(sendData);
   return (
     <div
       onClick={() => setOpenModalForm(!openModalForm)}
@@ -154,9 +162,15 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
               }
             />
 
-            <div onClick={hundlerLegalVisible} className={styles.select}>
+            <div onClick={() => {
+                hundlerLegalVisible()
+                setLegalChoice('')
+              }}
+              className={styles.select}>
               {
-                lang === 'ru'
+                legalChoice.length 
+                ? legalChoice
+                : lang === 'ru'
                 ?  <>{legalChoice.length ? data.legal_names[0].name : "Юридическое название"}</>
                 : lang === 'en'
                 ?   <>{legalChoice.length ? data.legal_names[0].name : "Legal name"}</>
@@ -212,16 +226,27 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
               </AnimatePresence>
 
             {
-              sectorChoice === 'Другое' ? (
+              lastItem === choice ? (
                 <div className={styles.selectOther}>
                   <input
+                    autoFocus={true}
                     type="text"
-                    placeholder="Другое"
+                    placeholder={
+                      lang === 'ru'
+                        ?  "Опишите"
+                        : lang === 'en'
+                        ?   "Describe"
+                        :   "Сүрөттөө"
+                    }
                     value={other}
                     onChange={(e) => setOther(e.target.value)}
                   />
                  <span
-                    onClick={hundlerSectorVisible}
+                    onClick={() => {
+                      hundlerSectorVisible()
+                      setSectorChoice('')
+                      setChoice(null);
+                    }}
                     style={
                       isSectorVisible
                         ? { transform: "rotate(-180deg)", transition: ".3s" }
@@ -244,8 +269,17 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
                 </div>
 
               ) : (
-                <div onClick={hundlerSectorVisible} className={styles.select}>
-                  {sectorChoice.length ? sectorChoice : "Укажите сектор"}
+                <div onClick={() => {
+                  hundlerSectorVisible()
+                  setSectorChoice('')
+                }} className={styles.select}>
+                  {sectorChoice.length
+                  ? sectorChoice
+                  : lang === 'ru'
+                        ?  <>{sectorChoice.length ? data.legal_names[0].name : "Укажите сектор"}</>
+                        : lang === 'en'
+                        ?   <>{sectorChoice.length ? data.legal_names[0].name : "Specify sector"}</>
+                        :   <>{sectorChoice.length ? data.legal_names[0].name : "Секторду көрсөтүңүз"}</>}
                   <span
                     style={
                       isSectorVisible
@@ -297,6 +331,7 @@ export const ModalForm = ({ openModalForm, setOpenModalForm, setComplate }) => {
                   data.sectors.map((item)=>{
                     return <p
                     onClick={() => {
+                      setChoice(item.id)
                       setSectorChoice(
                         item.name
                       );

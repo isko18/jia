@@ -7,6 +7,7 @@ export const ModalFinancing = ({setOpenModalForm ,openModal, setOpenModal, item}
     const lang = useSelector(s =>s.reducer.lang)
     const [data,setData] = useState({})
     const domain = useSelector(s => s.reducer.domain);
+    console.log(lang);
 
     useEffect(()=>{
         (async()=>{
@@ -19,7 +20,9 @@ export const ModalFinancing = ({setOpenModalForm ,openModal, setOpenModal, item}
           const data_res =await res.json()
 
 
-          setData(data_res)
+          setData(data_res);
+          console.log(data_res);
+
         })()
     },[lang])
     const [openDescription, setOpenDescription] = useState(false);
@@ -35,18 +38,31 @@ export const ModalFinancing = ({setOpenModalForm ,openModal, setOpenModal, item}
 
                 <div onClick={event => event.stopPropagation()} className={styles.descriptionBlock}>
                     <div className={styles.img}>
-                        <img src={data.name_infos?data.image:''} alt="logo" />
+                        <img src={item.image} alt="logo" />
                     </div>
                     <div className={styles.text}>
+                        {
+                            item.name_infos &&
+                            item.name_infos.map((item) => (
+                               <div key={item.id}>
+                                    <h2>
+                                    {item.title}
 
-                        <h2>{data.name_infos?data.name_infos[0].title:''}</h2>
-                        <p>{data.name_infos?data.name_infos[0].descriptions:''}</p>
+                                    </h2>
+                                    <p>{item.descriptions}</p>
+
+                                </div>
+
+                            ))
+                        }
+                        {/* <h2>{data.name_infos?data.name_infos[0].title:''}</h2>
+                        <p>{item.title}</p>
 
                         <h2>{data.name_infos?data.name_infos[1].title:''}</h2>
                         <p>{data.name_infos?data.name_infos[1].descriptions:''}</p>
 
                         <h2>{data.name_infos?data.name_infos[2].title:''}</h2>
-                        <p>{data.name_infos?data.name_infos[2].descriptions:''}</p>
+                        <p>{data.name_infos?data.name_infos[2].descriptions:''}</p> */}
                     </div>
                 </div>
 

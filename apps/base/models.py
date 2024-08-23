@@ -178,6 +178,10 @@ class SliderSponsors(models.Model):
         upload_to="image/",
         verbose_name="Фото"
     )
+    title_sponsers = models.CharField(
+        max_length=255,
+        verbose_name = "Названия партнера",
+    )
 
     def __str__(self):
         return str(self.slidertitle)

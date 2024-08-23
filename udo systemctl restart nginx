@@ -1,0 +1,20 @@
+[0;1;32m●[0m nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (]8;;file://biforum/usr/lib/systemd/system/nginx.service/usr/lib/systemd/system/nginx.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Tue 2024-08-13 12:42:11 UTC; 6s ago
+       Docs: ]8;;man:nginx(8)man:nginx(8)]8;;
+    Process: 7879 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 7880 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 7889 ExecReload=/usr/sbin/nginx -g daemon on; master_process on; -s reload (code=exited, status=0/SUCCESS)
+   Main PID: 7882 (nginx)
+      Tasks: 2 (limit: 2320)
+     Memory: 1.9M (peak: 4.1M)
+        CPU: 38ms
+     CGroup: /system.slice/nginx.service
+             ├─[0;38;5;245m7882 "nginx: master process /usr/sbin/nginx -g daemon on; master_process on;"[0m
+             └─[0;38;5;245m7891 "nginx: worker process"[0m
+
+Aug 13 12:42:11 biforum systemd[1]: Starting nginx.service - A high performance web server and a reverse proxy server...
+Aug 13 12:42:11 biforum systemd[1]: Started nginx.service - A high performance web server and a reverse proxy server.
+Aug 13 12:42:15 biforum systemd[1]: Reloading nginx.service - A high performance web server and a reverse proxy server...
+Aug 13 12:42:15 biforum nginx[7889]: 2024/08/13 12:42:15 [notice] 7889#7889: signal process started
+Aug 13 12:42:15 biforum systemd[1]: Reloaded nginx.service - A high performance web server and a reverse proxy server.

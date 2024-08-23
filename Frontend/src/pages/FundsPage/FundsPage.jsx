@@ -1,6 +1,4 @@
-import { DescriptionSection } from "@components/index";
 import { FirstSection } from "./FundsSections";
-import linesBg from '@img/abstraklines.svg'
 import classes from './FundPage.module.scss'
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -13,12 +11,11 @@ export const FundsPage = () => {
         (async()=>{
             const res =await fetch(`${domain}/${lang}/api/v1/financing/financing/`)
             const data_fetch =await res.json()
-            console.log(data_fetch);
             if(data_fetch.length){
                 setData({...data,title:data_fetch[0].title})
             }
         })()
-    },[])
+    },[lang, domain])
     return (
         <div style={{minHeight: '100vh'}} className={classes.fund}>
             <section className={classes.section}>

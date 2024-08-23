@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
 # DEBUG = config('DEBUG')
 DEBUG = True
-ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = ['*']
 
 
 DATABASES = {
@@ -26,6 +26,7 @@ DATABASES = {
 CORS_ORIGIN_WRITELIST = (
     'http://localhost:3000',
     'http://localhost:',
+    'https://biforum.kg/'
 )
 
 
@@ -50,12 +51,14 @@ CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'https://biforum.kg/'
 ]
 
 CORS_ORIGIN_WHITELIST = [
     'http://localhost:3000',
-    'http://127.0.0.1:8000'
+    'http://127.0.0.1:8000',
+    'https://biforum.kg/'
 ]
 
 CORS_ALLOW_HEADERS = (

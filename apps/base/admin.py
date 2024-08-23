@@ -12,7 +12,7 @@ class SliderInline(admin.TabularInline):
     model = Slider
     extra = 1
 
-class SliderSponsorsInline(admin.TabularInline):
+class SliderSponsorsInline(TranslationTabularInline):
     model = SliderSponsors
     extra = 1
 
@@ -102,6 +102,9 @@ class VideoAdmin(TranslationAdmin):
         }),
         ('Кыргызская версия', {
             'fields': ('url_ky', 'title_ky', 'descriptions_ky'),
+        }),
+        ('Английская версия', {
+            'fields': ('url_en', 'title_en', 'descriptions_en'),
         }),
     )
     

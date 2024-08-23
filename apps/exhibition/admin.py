@@ -1,6 +1,6 @@
 from django.contrib import admin
 from modeltranslation.admin import TranslationAdmin
-from .models import Exhibition, Slider
+from .models import Exhibition, Slider, RentStand
 from apps.exhibition.translation import *
 
 class ExhibitionAdmin(TranslationAdmin):
@@ -31,6 +31,7 @@ class SliderAdmin(TranslationAdmin):
             'fields': ('image_ky', 'image_2_ky',),
         }),
     )
-
+    
+admin.site.register(RentStand)
 admin.site.register(Exhibition, ExhibitionAdmin)
 admin.site.register(Slider, SliderAdmin)

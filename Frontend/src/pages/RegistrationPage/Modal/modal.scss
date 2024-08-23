@@ -1,0 +1,298 @@
+.registration-modal {
+
+    &-btn {
+        font-family: Inter;
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 30px;
+        color: #fff;
+        width: 450px;
+        height: 53px;
+        background: #D3A60D;
+        border: 1px solid #D3A60D;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: .5s;
+        display: block;
+        margin: 0 auto;
+        margin-top: 40px;
+
+        &:hover {
+            background-color: transparent;
+            color: #D3A60D;
+        }
+    }
+
+    &-wrapper {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background: #064CA166;
+        backdrop-filter: blur(10px);
+        top: 0;
+        left: 0;
+        z-index: 15;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &-form {
+        background-color: #fff;
+        padding: 20px;
+        width: 1000px;
+        height: 570px;
+        overflow: auto;
+
+        &-title {
+            font-family: Inter;
+            font-size: 30px;
+            font-weight: 600;
+            line-height: 30px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        select {
+            font-family: Inter;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #00000066;
+
+            option {
+                color: #000;
+            }
+        }
+
+        &-input {
+            width: 100%;
+            border: none;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #00000040;
+            outline: none;
+            font-family: Inter;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 24px;
+            color: #000;
+
+            &::placeholder {
+                font-family: Inter;
+                font-size: 24px;
+                font-weight: 500;
+                line-height: 24px;
+                color: #00000066;
+            }
+        }
+
+    }
+
+    &-qr {
+
+        &-block {
+            width: 684px;
+            height: 500px;
+            background-color: #fff;
+            text-align: center;
+            position: relative;
+        }
+
+        &-text {
+            position: absolute;
+            font-family: Inter;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 20px;
+            color: #A4A9AD;
+            text-align: center;
+            width: 100%;
+            bottom: 60px;
+        }
+
+        &-img {
+            height: 100%;
+        }
+    }
+
+    &-complete {
+
+        &-block {
+            width: 58%;
+            height: 80vh;
+            text-align: center;
+            background-color: #fff;
+            margin: 0 auto;
+            padding: 50px 95px;
+        }
+
+        &-title {
+            font-family: Inter;
+            font-size: 40px;
+            font-weight: 900;
+            line-height: 44px;
+            text-align: center;
+            color: #064CA1;
+            margin-top: 50px;
+        }
+
+        &-img {
+            width: 30%;
+        }
+
+        &-text {
+            font-family: Inter;
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 22px;
+            text-align: center;
+            color: #A4A9AD;
+            margin-top: 30px;
+            a{
+                color: #A4A9AD;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width:1400px) {
+
+}
+
+@media screen and (max-width:1200px) {
+    .registration-title{
+        font-size: 40px;
+    }
+    .registration-text{
+        font-size: 30px;
+    }
+
+    .registration-widget{
+        padding: 20px 30px;
+        &-title{
+            font-size: 40px;
+        }
+        &-list-item{
+            font-size: 22px;
+        }
+        &-price-text{
+            font-size: 20px;
+        }
+        &-btn{
+            font-size: 17px;
+            line-height: 100%;
+            padding: 20px 40px;
+        }
+    }
+    .registration-modal-form{
+        width: 80%;
+        height: 60vh;
+        overflow: auto;
+        margin: 0 auto;
+    }
+    .registration-modal-complete-block{
+        padding: 20px;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width:992px) {
+    .registration-widget{
+        padding: 20px auto;
+        &-title{
+            font-size: 30px;
+        }
+        &-text{
+            font-size: 18px;
+        }
+
+        &-btn{
+            padding: 20px;
+            font-size: 16px;
+        }
+    }
+    .registration-modal-form{
+        width: 90%;
+    }
+
+    .registration-modal-complete-title{
+        font-size: 30px;
+        line-height: 100%;
+    }
+
+}
+
+@media screen and (max-width:768px) {
+    .registration .col-6{
+        width: 100%;
+    }
+    .registration .row{
+        row-gap: 50px;
+    }
+
+    .registration-modal-form{
+        width: 90%;
+        padding: 20px 3px;
+        &-title{
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        &-input,
+        select{
+            font-size: 16px;
+            &::placeholder{
+                font-size: 16px;
+            }
+        }
+
+    }
+
+    .registration-modal-btn{
+        font-size: 18px;
+        width: 220px;
+        height: 55px;
+        padding: auto;
+    }
+
+    .registration-modal-qr-block {
+        width: 270px;
+    }
+    .registration-modal-qr-text{
+        font-size: 18px;
+    }
+
+    .registration-modal-complete-title{
+        font-size: 18px;
+        margin-top: 20px;
+    }
+    .registration-modal-complete-text {
+        font-size: 16px;
+    }
+    .registration-modal-complete-img{
+        width: 50%;
+
+    }
+    .registration-modal-complete-block{
+        padding: 7px;
+        height: auto;
+    }
+}
+
+@media screen and (max-width:576px) {
+    .registration-widget{
+        &-text{
+                font-size: 14px;
+        }
+
+        &-btn{
+            font-size: 14px;
+        }
+
+        &-title{
+            width: 200px;
+        }
+    }
+}
